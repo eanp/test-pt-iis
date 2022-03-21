@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import 'Styles.scss';
 import Cookies from 'components/Cookies'
-import Counter from 'components/Counter'
 import BarData from 'components/BarData'
 import DounatData from 'components/DounatData'
 import Check from 'assets/Check.png'
@@ -40,36 +39,6 @@ function Radio({active,text,toogle}){
             {text}
             </div>
         </div>
-    )
-}
-
-function ListData(props,headlink,link,toogle){
-    let { data } = props
-    let list =  data.map((item,index)=> {
-    return(
-        <tr key={index} className="ListTable">
-            <td>
-                <Selector active={true} />
-            </td>
-            <td className='TableRow'>{item.name}</td>
-            <td className='TableRow'>{item.category}</td>
-            <td className='TableRow'>{item.availability}</td>
-            <td className='TableRow'>{item.arrival_status}</td>
-        </tr>
-        )
-    })
-
-    return(
-        <table className='Table'>
-        <tr className="ListTableHead">
-            <td><Selector active={false} /></td>
-            <td className='TableRowHead'>Name</td>
-            <td className='TableRowHead'>Category</td>
-            <td className='TableRowHead'>Availability</td>
-            <td className='TableRowHead'>Arrival</td>
-        </tr>
-            {list}
-        </table>
     )
 }
 
@@ -140,9 +109,9 @@ function Home(){
         setListCheck(point)
     }
 
-    const getDataLabel = async () => {
-        let barData = barlist
-        let dounatData = dounatList
+    const getDataLabel = () => {
+        let barData = [...barlist]
+        let dounatData = [...dounatList]
         let long =  listData.length
         listData.map((item,index) => {
             if(item.category === "Category 1") {
@@ -157,7 +126,7 @@ function Home(){
             if(item.category === "Category 4") {
                 barData[3] = barData[3]+1
             }
-            setBarlist(barData)
+            setBarlist([...barData])
             index == long-1 && setBarLoad(true) 
             })
 
@@ -168,7 +137,7 @@ function Home(){
             if(item.availability === "Full") {
                 dounatData[1] = dounatData[1]+1
             }
-            setDounatList(dounatData)
+            setDounatList([...dounatData])
             index == long-1 && setDounatLoad(true) 
             })
             
@@ -201,24 +170,67 @@ function Home(){
         },
     ],
     }
+
+    const Marking = (id,status) => {
+        status == "mark" && fetch(`${baseAPI}/${id}/mark-as-arrived`,{method:'PUT', headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            }})
+            .then((response) => response.json())
+            .then((json)=> {
+                console.log("component put mount",json)
+        });
+        status == "delete" && fetch(`${baseAPI}/${id}`,{method:'DELETE', headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            }})
+            .then((response) => response.json())
+            .then((json)=> {
+                console.log("component delete mount",json)
+        });
+
+    }
+
+    const refreshTable = () => {
+        setBarLoad(false)
+        setDounatLoad(false)
+        getData()
+        setBarlist([...[0,0,0,0]])
+        setDounatList([...[0,0]])
+        setListCheck([...[]])
+    }
+
+    const Bulk = (status) => {
+        let count = 0
+        listCheck.map((item)=>{
+            Marking(item,status)
+            count = count + 1
+        })
+        count == listCheck.length && refreshTable()
+    }
     
     const SubmitForm = () => {
         console.log('form',nameForm ,catForm,availForm)
         let data = {name:nameForm,category:catForm, availability:availForm == 0 ? "Available" : "Full"}
-        fetch(baseAPI,{method:'POST', headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
+        nameForm && catForm && fetch(baseAPI,{method:'POST', headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
         },body:JSON.stringify(data)})
         .then((response) => response.json())
         .then((json)=> {
             console.log("component post mount",json)
+
+            setBarLoad(false)
+            setDounatLoad(false)
+            
             getData()
-            getDataLabel()
-            // setName(json.body)
             setNameForm("")
-            setCatForm("")
             setAvailForm(0)
+
+            setBarlist([...[0,0,0,0]])
+            setDounatList([...[0,0]])
         });
+        (catForm == "" || nameForm == "") && alert("Nama dan kategori harus diisi")
     }
     
     const getData = () => {
@@ -244,7 +256,8 @@ function Home(){
         getData()
     }, [])
     useEffect(()=>{
-        !barLoad && getDataLabel()
+        !barLoad && !dounatLoad && getDataLabel()
+        
     }, [listData])
 
     return(
@@ -379,18 +392,18 @@ function Home(){
             <div className='ModalWrapper'>
                 <div className='Modal'>
                     <div className='LeftWrap'>
-                        <img src={Close} alt="Close" className='Selector' /> 
+                        <img onClick={()=>CancelBulk()} src={Close} alt="Close" className='Selector' /> 
                         <div className='SelectedText'>
                            {`${listCheck.length} `} Table Selected
                         </div>
                     </div>
                         
                     <div className='RightWrap'>
-                        <div className='ButtonLabel'>
+                        <div onClick={()=>Bulk("mark")} className='ButtonLabel'>
                         <img src={Label} alt="Label" className='Selector' /> 
                         Mark as Arrived
                         </div>
-                        <div className='ButtonTrash'>
+                        <div onClick={()=>Bulk("delete")}  className='ButtonTrash'>
                         <img src={Trash} alt="Trash" className='Selector' /> 
                         Delete Table
                         </div>
