@@ -1,0 +1,509 @@
+$primary: #EF6D3F;
+$white: #ffffff;
+$blacktext: #242933;
+$footerbg: #ECEDF1;
+$gray2: #4F4F4F;
+$footerlink: #4C9AFF;
+$f0: #f0f0f0;
+$borderwrapper: #DADBDD;
+$Neutral9: #465060;
+$N100: #CFD4DC;
+$N400: #7A8598;
+$f8: #F8F8F8;
+$p7: #295757;
+$N200: #B0B7C3;
+$p500: #547979;
+
+body{
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.Main{
+    background-color: $white;
+    height: 100%;
+    padding: 24px;
+    width: 1440px;
+    margin: 0 auto;
+}
+
+.HeadText{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    color: $blacktext;
+}
+
+.FooterLogo{
+    height: 20px;
+    width: 20px;
+    margin-right: 8px;
+}
+
+.Cookies{
+    position: sticky;
+    left: 0px;
+    height: 60px;
+    bottom: 0px;
+    // background-color: red;
+    background-color: $footerbg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fill;
+    animation: footer 2.4s;
+}
+@keyframes footer{
+    from {
+        transform: translateY(60px);
+    }
+    to {
+        transform: translateY(0px);
+    }
+}
+
+.CookiesText{
+    color: $gray2;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+}
+.ActionCookies{
+    margin-left: 8px;
+    text-decoration: underline;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 140%;
+    color: $footerlink;
+    cursor: pointer;
+}
+
+.Wrapper{
+    height: 50%;
+    min-height: 50%;
+    max-height: 504px;
+    // background-color: aqua;
+    width: fill;
+    display: flex;
+    margin-top: 36px;
+    align-items: center;
+    justify-content: center;
+    position: relative;;
+}
+
+.FormInput{
+    height: 500px;
+    background-color: $f0;
+    flex:3.3;
+    border-radius: 16px;
+    margin-right: 24px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 24px;
+}
+.CategoryRatio{
+    height: 500px;
+    flex:5.9;
+    background-color: $white;
+    border: 1px solid $borderwrapper;
+    border-radius: 16px;
+    padding: 0 16px;
+    
+}
+.AvailRatio{
+    height: 500px;
+    flex: 4.24;
+    margin-left: 24px;
+    background-color: $white;
+    border: 1px solid $borderwrapper;
+    border-radius: 16px;
+    padding: 0 12px;
+}
+.FormWrapper{
+    width: fill;
+    // background-color: red;
+    padding: 0px;
+    margin-top: 28px;
+}
+.FormLabel{
+    margin-left: 16px;
+    color: $Neutral9;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    margin-bottom: 8px;
+}
+.FormLabelRed{
+    margin-left: 16px;
+    color: red;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    margin-bottom: 8px;
+    position: absolute;
+}
+.FormInputField{
+    width: fill;
+    background-color: $white;
+    border: 1px solid $N100;
+    border-radius: 8px;
+    height: 44px;
+    padding-left: 16px;
+    padding-right: 16px;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: $N400;
+    display: flex;
+    
+}
+.FormInputField:focus {
+    outline: none;
+}
+.SubmitButton{
+    background-color: $p7;
+    margin-top: 24px;
+    justify-content: center;
+    align-items: center;
+    height: 44px;
+    padding: 0 16px;
+    border-radius: 12px;
+    border: none;
+    color: #fff;
+    font-family: 'Poppins Medium';
+    font-size: 15px;
+    line-height: 20px;
+    position: absolute;
+    bottom: 32px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+.SubmitButton:hover{
+    background-color: $primary;
+}
+.RadioOn{
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+    border: 1px solid $N200;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    background-color: $white;
+}
+.InRadio{
+    width: 12px;
+    height: 12px;
+    background-color: $p500;
+    border-radius: 8px;
+}
+.RadioWrapper{
+    margin-right: 38px;
+    flex-direction: row;
+    display: flex;
+    width: 100px;
+}
+.RadioText{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: $blacktext;
+    margin-left: 14px;
+}
+.RadioList{
+    flex-direction: row;
+    display: flex;
+}
+
+.HeadBar{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    color: #242933;
+    margin-top: 16px;
+    margin-left: 12px;
+}
+.BannerRatio{
+    height: 100px;
+    background-color: $f0;
+    width: fill;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    padding: 0 24px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    margin-bottom: 24px;
+}
+.BannerContent{
+    display: flex;
+    flex: 1;
+    height: 60px;
+    border-right-width: 2px;
+    border-right-color: #DBDBDB;
+    border-right-style: solid;
+    width: fill;
+    flex-direction: column;
+    padding-left: 12px;
+    justify-content: space-around;
+}
+.BannerHead{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    color: #647186;
+}
+.BannerData{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    color: #242933;
+}
+.DounatWrap{
+    width: fill;
+    justify-content: center;
+    align-items: center;
+    padding: 15%;
+    margin-bottom: -10%;
+}
+.PointA{
+    height: 20px;
+    width: 20px;
+    border-radius: 4px;
+    background-color: #547979;
+}
+.PointB{
+    height: 20px;
+    width: 20px;
+    border-radius: 4px;
+    background-color: $primary;
+}
+.PointWrapper{
+    width: fill;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around ;
+    align-items: center;
+    padding: 0 10%;
+    margin-top: 8px;
+}
+.PointText{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #647186;
+    margin-left: 12px;
+}
+.PointData{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    color: #465060;
+}
+.LabelWrap{
+    display: flex;
+    flex-direction: row;
+}
+.Table{
+    width: fill;
+    display: flex;
+    flex-direction: column;
+}
+
+.ListTable{
+    background-color: $white;
+    flex-direction: row;
+    display: flex;
+    padding: 0 48px;
+    height: 80px;
+    border: 1px solid #DFE1E6;
+    justify-content: flex-start;
+    border-radius: 12px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.ListTableActive{
+    background-color: $white;
+    flex-direction: row;
+    display: flex;
+    padding: 0 48px;
+    height: 79px;
+    border: 2px solid #295757;
+    justify-content: flex-start;
+    border-radius: 12px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.ListTableHead{
+    background-color: $white;
+    flex-direction: row;
+    display: flex;
+    padding: 0 48px;
+    justify-content: flex-start;
+    border-radius: 12px;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 24px;
+}
+
+.TableRow{
+    margin-left: 27px;
+    flex:1;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+    text-align: left;
+}
+.TableRowHead{
+    margin-left: 27px;
+    flex:1;
+    color: #000000;
+    text-align: left;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #566376;
+}
+.SelectorWrapper{
+    height: 18px;
+    width: 18px;
+    border-radius: 3px;
+    border: 1px solid $N200;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    background-color: $white;
+}
+.Selector{
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+.ModalWrapper{
+    width: fill;
+    position: sticky;
+    bottom: 80px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    animation: modal 0.6s;
+}
+@keyframes modal{
+    from {
+        transform: translateY(80px);
+    }
+    to {
+        transform: translateY(0px);
+    }
+}
+.Modal{
+    width: 580px;
+    height: 70px;
+    border: 1px solid #DFE1E6;
+    border-radius: 12px;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $white;
+}
+.LeftWrap{
+    flex-direction: row;
+    display: flex;
+    padding-left: 24px;
+    flex: 1;
+    align-items: center;
+}
+.RightWrap{
+    align-items: center;
+    flex-direction: row;
+    display: flex;
+    flex: 1;
+
+}
+.SelectedText{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: #242933;
+    margin-left: 16px;
+}
+.ButtonTrash{
+    font-family: 'Poppins Medium';
+    font-size: 12px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.2px;
+    color: #FFFFFF;
+    justify-content: space-between;
+    height: 36px;
+    background-color: #EE5C5C;
+    border-radius: 12px;
+    width: 100px;
+    padding: 0 16px;
+    margin-right: 24px;
+    margin-left: 12px;
+    cursor: pointer;
+}
+.ButtonTrash:active{
+    opacity: 0.8;
+}
+.ButtonLabel:active{
+    opacity: 0.8;
+}
+
+.ButtonLabel{
+    font-family: 'Poppins Medium';
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.2px;
+    color: #FFFFFF;
+    justify-content: space-between;
+    height: 36px;
+    background-color: #295757;
+    border-radius: 12px;
+    width: 120px;
+    padding: 0 16px;
+    margin-left: 24px;
+}
